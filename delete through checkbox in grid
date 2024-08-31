@@ -1,0 +1,19 @@
+ protected void Btndelete_Click(object sender, EventArgs e)
+        {
+            foreach(GridViewRow row in GridView1.Rows)
+            {
+                var ch = row.FindControl("CheckBox1") as CheckBox;
+
+                if (ch.Checked)
+                {
+                    var lbl = row.FindControl("Label1") as Label;
+                    SqlConnection con = new SqlConnection(k);
+                    con.Open();
+                    int id = Convert.ToInt32(lbl.Text);
+                    SqlCommand cmd = new SqlCommand("Delete from student where id='" + id + "'", con);
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    getgird();
+                }
+            }
+        }
