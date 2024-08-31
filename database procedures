@@ -1,0 +1,28 @@
+
+        --creation of table--
+
+create table student(id int primary key,name varchar(25),age int,phno bigint)
+
+            ----------
+         ---procedures---
+create procedure proc_student_insert(@id int ,@name varchar(25),@age int,@phno bigint)
+as begin
+insert into student values(@id,@name,@age,@phno)
+end;
+              -------
+create procedure proc_student_getgrid
+as begin
+select * from student
+end;
+             --------
+create procedure proc_student_delete(@id int)
+as begin
+delete from student where id=@id
+end;
+            --------
+
+create procedure proc_student_update(@id int,@name varchar(25),@age int,@phno bigint)
+as begin
+update  student set name=@name,age=@age,phno=@phno where id=@id
+end;
+            ----------
