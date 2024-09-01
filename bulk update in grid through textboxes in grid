@@ -1,4 +1,5 @@
- protected void btnupdate_Click(object sender, EventArgs e)
+
+protected void btnupdate_Click(object sender, EventArgs e)
         {
             foreach(GridViewRow row in GridView1.Rows)
             {
@@ -11,3 +12,21 @@
             }
             getgrid();
         }
+
+          ---------------------------------------------
+ public void update(string name,string age,string phno,int id)
+        {
+            SqlConnection con = new SqlConnection(k);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("proc_student_update", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@name", name);
+            cmd.Parameters.AddWithValue("@age", age);
+            cmd.Parameters.AddWithValue("@phno", phno);
+            cmd.ExecuteNonQuery();
+            con.Close();
+           
+        }
+
+
